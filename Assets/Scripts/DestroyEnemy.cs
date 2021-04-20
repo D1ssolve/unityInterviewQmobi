@@ -3,19 +3,29 @@ using System.Linq;
 
 public class DestroyEnemy : MonoBehaviour
 {
+    #region Fields
+    /// <summary>
+    /// <remarks>Система частиц имитирующих и визуализирующих визуальный эффект.</remarks>
+    /// <para>Эффект взрыва.</para>
+    /// </summary>
     public ParticleSystem explosion;
 
+    /// <summary>
+    /// <remarks>Воспроизводимая звуковая дорожка.</remarks>
+    /// <para>Звук взрыва.</para>
+    /// </summary>
     public AudioClip detonation;
 
+    /// <summary>
+    /// Наименование объекта камеры сцены.
+    /// </summary>
     private static readonly string cameraName = "Main Camera";
+    #endregion
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Обработчик входа другого объекта в коллайдер, прикрепленный к этому объекту.
+    /// </summary>
+    /// <param name="collision">Collider другого объекта участвующего в столкновении.</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var name = collision.gameObject.name;
@@ -29,7 +39,7 @@ public class DestroyEnemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (name == "Spaceship (1)")
+        if (name == "Spaceship")
         {
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
