@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8029522673380669127}
   - component: {fileID: 820224589790415084}
   - component: {fileID: 9039623468352385223}
+  - component: {fileID: -3254786110967295838}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -95,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0070108473, y: -0.6389997}
@@ -146,3 +147,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: a8122324e1e47854b9e1deef1abbd809, type: 3}
   maxDistanse: 500
+--- !u!114 &-3254786110967295838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2017672368324022302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e59ec2c0e306ea44a0b9af6724311ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
