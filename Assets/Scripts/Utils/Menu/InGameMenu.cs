@@ -22,16 +22,12 @@ public class InGameMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            var audio = gameObject.scene.GetRootGameObjects()
-                                        .FirstOrDefault(a => a.gameObject.name == ObjectsInfo.CameraName).GetComponent<AudioSource>();
             if (GameIsPaused)
             {
-                audio.mute = true;
                 Resume();
             }
             else
             {
-                audio.mute = false;
                 Pause();
             }
         }
@@ -66,7 +62,7 @@ public class InGameMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        ScoreScript.scoreValue = 0;
+        if (Time.timeScale == 0f) Time.timeScale = 1f;
 
         SceneManager.sceneLoaded -= LoadGameScene.GetLoadGameScene().WhenSceneFinillyLoaded;
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ObjectsInfo.SceneInfo.MenuSceneID, LoadSceneMode.Single);
