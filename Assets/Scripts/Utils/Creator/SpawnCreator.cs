@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Создатель спавна противников
+/// </summary>
 public class SpawnCreator : MonoBehaviour, ICreator
 {
     public void Create()

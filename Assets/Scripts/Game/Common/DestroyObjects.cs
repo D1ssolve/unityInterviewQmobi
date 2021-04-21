@@ -52,6 +52,9 @@ public class DestroyObjects : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Проигрывание аудио-дорожки взрыва
+    /// </summary>
     void PlaySound()
     {
         var cameraPosition = gameObject.scene.GetRootGameObjects()

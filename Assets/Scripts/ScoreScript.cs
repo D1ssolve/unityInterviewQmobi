@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour
 {
+    #region Fields
     public static int scoreValue = 0;
-
     Text score;
+    #endregion
 
     // Start is called before the first frame update
     void Start()

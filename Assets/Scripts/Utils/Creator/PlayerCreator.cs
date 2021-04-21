@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Создатель объекта космический корабль
+/// </summary>
 public class PlayerCreator : MonoBehaviour, ICreator
 {
     public void Create()

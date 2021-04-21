@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
-public class SpawnEnemy : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
     #region Fields
     public GameObject enemy;
@@ -32,7 +32,7 @@ public class SpawnEnemy : MonoBehaviour
 
         GameObject enemySoldier = Instantiate(enemy, spawnPoint, Quaternion.identity);
 
-        enemySoldier.TryGetComponent<Movement>(out var a);
+        enemySoldier.TryGetComponent<EnemyMovement>(out var a);
 
         AccelerationByScore(a);
 
@@ -42,7 +42,7 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
 
-    private void AccelerationByScore(Movement movement)
+    private void AccelerationByScore(EnemyMovement movement)
     {
         int score = ScoreScript.scoreValue;
 

@@ -4,6 +4,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Игровое меню
+/// </summary>
 public class InGameMenu : MonoBehaviour
 {
     #region Fields
@@ -14,18 +17,13 @@ public class InGameMenu : MonoBehaviour
     public GameObject endMenuUI;
     #endregion
 
-    /// <summary>
-    /// Наименование объекта камеры сцены.
-    /// </summary>
-    private static readonly string cameraName = "Main Camera";
-
-    // Update is called once per frame
+    #region Base methods
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             var audio = gameObject.scene.GetRootGameObjects()
-                                        .FirstOrDefault(a => a.gameObject.name == cameraName).GetComponent<AudioSource>();
+                                        .FirstOrDefault(a => a.gameObject.name == ObjectsInfo.CameraName).GetComponent<AudioSource>();
             if (GameIsPaused)
             {
                 audio.mute = true;
@@ -43,7 +41,9 @@ public class InGameMenu : MonoBehaviour
             GameOver();
         }
     }
+    #endregion
 
+    #region Custom methods
     private void GameOver()
     {
         endMenuUI.SetActive(true);
@@ -69,24 +69,22 @@ public class InGameMenu : MonoBehaviour
         ScoreScript.scoreValue = 0;
 
         SceneManager.sceneLoaded -= LoadGameScene.GetLoadGameScene().WhenSceneFinillyLoaded;
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ObjectsInfo.MenuSceneID, LoadSceneMode.Single);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ObjectsInfo.SceneInfo.MenuSceneID, LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
-        Debug.Log("QUIT!");
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+
         Application.Quit();
     }
 
     public void Restart()
     {
         ScoreScript.scoreValue = 0;
-
-        //SceneManager.sceneLoaded -= LoadGameScene.GetLoadGameScene().WhenSceneFinillyLoaded;
-        //SceneManager.LoadSceneAsync(ObjectsInfo.LoadingSceneID);
-
-        //SceneManager.sceneUnloaded += LoadGameScene.GetLoadGameScene().RestartGame;
-        //SceneManager.UnloadSceneAsync(ObjectsInfo.GameSceneID);
-        SceneManager.LoadSceneAsync(ObjectsInfo.GameSceneID, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync(ObjectsInfo.SceneInfo.GameSceneID, LoadSceneMode.Single);
     }
+    #endregion
 }

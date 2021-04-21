@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Инициализатор игровой сцены
+/// </summary>
 public class LoadGameScene
 {
     public static LoadGameScene LoadGameSceneObject;
@@ -17,21 +20,14 @@ public class LoadGameScene
         return LoadGameSceneObject;
     }
 
+    /// <summary>
+    /// Обработчик - SceneManager.sceneLoaded
+    /// </summary>
     public void WhenSceneFinillyLoaded(Scene scene, LoadSceneMode mode)
     {
         //gameobject or null?
 
-        InitializationStartObjects initializationStartObjects = new InitializationStartObjects();
-
-        initializationStartObjects.Initialize();
+        new PlayerCreator().Create();
+        new SpawnCreator().Create();
     }
-
-    //public void RestartGame(Scene scene)
-    //{
-    //    SceneManager.sceneUnloaded -= GetLoadGameScene().RestartGame;
-
-    //    SceneManager.sceneLoaded += GetLoadGameScene().WhenSceneFinillyLoaded;
-
-    //    SceneManager.LoadSceneAsync(ObjectsInfo.GameSceneID, LoadSceneMode.Single);
-    //}
 }

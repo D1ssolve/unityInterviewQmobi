@@ -10,12 +10,6 @@ public class MoveShip : MonoBehaviour
     Vector2 movement;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +19,14 @@ public class MoveShip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ship.MovePosition(ship.position + movement * moveSpeed * Time.fixedDeltaTime);
+        var deltaVector = ship.position + movement * moveSpeed * Time.fixedDeltaTime;
+
+        if (ObjectsInfo.MinXPosition < deltaVector.x
+            && ObjectsInfo.MaxXPosition > deltaVector.x
+            && ObjectsInfo.MinYPosition < deltaVector.y
+            && ObjectsInfo.MaxYPosition > deltaVector.y)
+        {
+            ship.MovePosition(deltaVector);
+        }
     }
 }
