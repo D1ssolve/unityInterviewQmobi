@@ -12,7 +12,7 @@ public class ScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TryGetComponent<Text>(out Text text);
+        TryGetComponent(out Text text);
         score = text;
     }
 

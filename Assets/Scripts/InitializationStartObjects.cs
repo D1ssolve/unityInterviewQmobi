@@ -5,15 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class InitializationStartObjects : MonoBehaviour
 {
-    public GameObject CreatePlayerObject()
+    public void Initialize()
     {
-        GameObject player = Resources.Load("Spaceship") as GameObject;
-        return Instantiate(player, ObjectsInfo.PlayerVector3, ObjectsInfo.PlayerQuaternion);
-    }
+        //gameobject or null?
+        new PlayerCreator().Create();
 
-    public GameObject CreateSpawnObject()
-    {
-        GameObject spawn = Resources.Load("Spawn") as GameObject;
-        return Instantiate(spawn, ObjectsInfo.SpawnVector3, ObjectsInfo.SpawnQuaternion);
+        new SpawnCreator().Create();
     }
 }

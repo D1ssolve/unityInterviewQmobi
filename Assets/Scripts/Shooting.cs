@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Shooting : MonoBehaviour
 {
+    #region Fields
     public Transform firePoint;
     public GameObject bulletPrefab;
 
@@ -12,6 +13,7 @@ public class Shooting : MonoBehaviour
     AudioSource audioSource;
 
     public float bulletForce;
+    #endregion
 
     private void Start()
     {

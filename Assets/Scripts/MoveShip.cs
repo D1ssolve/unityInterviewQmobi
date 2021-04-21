@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MoveShip : MonoBehaviour
 {
+    #region Fields
     public Rigidbody2D ship;
-
     public float moveSpeed = 20f;
-
     Vector2 movement;
+    #endregion
 
     // Start is called before the first frame update
     void Start()

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    #region Fields
     public Transform target;
     public float speed;
+    #endregion
 
     // Update is called once per frame
     void Update()

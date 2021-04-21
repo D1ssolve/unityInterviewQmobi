@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenu : MonoBehaviour
 {
+    #region Fields
     public static bool GameIsPaused = false;
-
     public static bool GameIsEnd = false;
 
     public GameObject pauseMenuUI;
-
     public GameObject endMenuUI;
+    #endregion
 
     /// <summary>
     /// Наименование объекта камеры сцены.
@@ -66,6 +66,8 @@ public class InGameMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        ScoreScript.scoreValue = 0;
+
         SceneManager.sceneLoaded -= LoadGameScene.GetLoadGameScene().WhenSceneFinillyLoaded;
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ObjectsInfo.MenuSceneID, LoadSceneMode.Single);
     }
@@ -78,6 +80,13 @@ public class InGameMenu : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        ScoreScript.scoreValue = 0;
+
+        //SceneManager.sceneLoaded -= LoadGameScene.GetLoadGameScene().WhenSceneFinillyLoaded;
+        //SceneManager.LoadSceneAsync(ObjectsInfo.LoadingSceneID);
+
+        //SceneManager.sceneUnloaded += LoadGameScene.GetLoadGameScene().RestartGame;
+        //SceneManager.UnloadSceneAsync(ObjectsInfo.GameSceneID);
+        SceneManager.LoadSceneAsync(ObjectsInfo.GameSceneID, LoadSceneMode.Single);
     }
 }

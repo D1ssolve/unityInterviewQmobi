@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class ObjectsInfo
 {
+    #region Fields
     public static Vector3 PlayerVector3 => new Vector3(959f, 493f, 0f);
 
     public static Quaternion PlayerQuaternion => new Quaternion(0f, 0f, 0f, 0f);
@@ -12,7 +13,10 @@ public static class ObjectsInfo
 
     public static Quaternion SpawnQuaternion => new Quaternion(0f, 0f, 0f, 0f);
 
+    public static int MenuSceneID => 0;
+
     public static int GameSceneID => 1;
 
-    public static int MenuSceneID => 0;
+    public static int LoadingSceneID => 2;
+    #endregion
 }

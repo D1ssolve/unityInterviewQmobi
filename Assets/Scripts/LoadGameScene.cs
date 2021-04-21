@@ -19,10 +19,19 @@ public class LoadGameScene
 
     public void WhenSceneFinillyLoaded(Scene scene, LoadSceneMode mode)
     {
-        //gameobject ?
+        //gameobject or null?
 
-        var fabricMethod = new FabricMethod();
-        fabricMethod.Creator(FabricMethod.TypesObject.Player);
-        fabricMethod.Creator(FabricMethod.TypesObject.Spawn);
+        InitializationStartObjects initializationStartObjects = new InitializationStartObjects();
+
+        initializationStartObjects.Initialize();
     }
+
+    //public void RestartGame(Scene scene)
+    //{
+    //    SceneManager.sceneUnloaded -= GetLoadGameScene().RestartGame;
+
+    //    SceneManager.sceneLoaded += GetLoadGameScene().WhenSceneFinillyLoaded;
+
+    //    SceneManager.LoadSceneAsync(ObjectsInfo.GameSceneID, LoadSceneMode.Single);
+    //}
 }

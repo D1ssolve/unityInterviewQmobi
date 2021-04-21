@@ -6,13 +6,14 @@ using System.Linq;
 
 public class SpawnEnemy : MonoBehaviour
 {
+    #region Fields
     public GameObject enemy;
-    public float spawnTime = 2.0f;
-
     Transform target;
+    public float spawnTime = 2.0f;
 
     int deltaScore = 1;
     int riseCounter = 1;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
