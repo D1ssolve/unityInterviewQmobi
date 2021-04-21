@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject enemy;
     public float spawnTime = 2.0f;
-    public Transform target;
+
+    Transform target;
+
+    int deltaScore = 1;
+    int riseCounter = 1;
 
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating(nameof(AddEnemy), spawnTime, spawnTime);
+
+        target = SceneManager.GetActiveScene().GetRootGameObjects().FirstOrDefault(A => A.name == "Spaceship(Clone)").transform;
     }
 
     void AddEnemy()
@@ -32,9 +40,6 @@ public class SpawnEnemy : MonoBehaviour
             a.target = target;
         }
     }
-
-    int deltaScore = 1;
-    int riseCounter = 1;
 
     private void AccelerationByScore(Movement movement)
     {

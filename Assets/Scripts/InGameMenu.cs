@@ -4,22 +4,20 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class InGameMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
+    public static bool GameIsEnd = false;
+
     public GameObject pauseMenuUI;
+
+    public GameObject endMenuUI;
 
     /// <summary>
     /// Наименование объекта камеры сцены.
     /// </summary>
     private static readonly string cameraName = "Main Camera";
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -39,9 +37,20 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
+        if (GameIsEnd)
+        {
+            GameOver();
+        }
     }
 
-    public  void Resume()
+    private void GameOver()
+    {
+        endMenuUI.SetActive(true);
+        GameIsEnd = false;
+    }
+
+    public void Resume()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -57,13 +66,18 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-        Debug.Log("Loading menu...");
+        SceneManager.sceneLoaded -= LoadGameScene.GetLoadGameScene().WhenSceneFinillyLoaded;
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(ObjectsInfo.MenuSceneID, LoadSceneMode.Single);
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quitting game");
+        Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

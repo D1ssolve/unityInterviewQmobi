@@ -97,3 +97,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 1870986969180911032, guid: b426405cb18754e4a99947085f578ac6, type: 3}
   spawnTime: 2
+  target: {fileID: 7265458734646706460, guid: 257c7ac5450317142bdfb69812aa8c91, type: 3}

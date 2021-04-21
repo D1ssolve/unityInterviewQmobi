@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Linq;
 
-public class DestroyEnemy : MonoBehaviour
+public class DestroyObjects : MonoBehaviour
 {
     #region Fields
     /// <summary>
@@ -39,12 +39,16 @@ public class DestroyEnemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (name == "Spaceship")
+        if (name == "Spaceship(Clone)")
         {
+            PlaySound();
+            PlaySound();
             Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject);
             Instantiate(explosion, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
             Destroy(collision.gameObject);
+
+            InGameMenu.GameIsEnd = true;
         }
     }
 
@@ -53,6 +57,6 @@ public class DestroyEnemy : MonoBehaviour
         var cameraPosition = gameObject.scene.GetRootGameObjects()
                                              .FirstOrDefault(a => a.gameObject.name == cameraName).transform.position;
 
-        AudioSource.PlayClipAtPoint(detonation, cameraPosition, 0.7f);
+        AudioSource.PlayClipAtPoint(detonation, cameraPosition, 3f);
     }
 }

@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Shooting : MonoBehaviour
 {
-
     public Transform firePoint;
     public GameObject bulletPrefab;
 
@@ -21,7 +21,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && PauseMenu.GameIsPaused == false)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && InGameMenu.GameIsPaused == false)
         {
             Shoot();
         }
@@ -35,6 +35,6 @@ public class Shooting : MonoBehaviour
 
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
 
-        audioSource.PlayOneShot(impact, 0.7f);
+        audioSource.PlayOneShot(impact, 4f);
     }
 }

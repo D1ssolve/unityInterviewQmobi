@@ -11,10 +11,4 @@ public class ExplosionLifeTime : MonoBehaviour
         float totalDuration = parts.main.duration + parts.main.startLifetimeMultiplier;
         Destroy(gameObject, totalDuration);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
